@@ -1949,10 +1949,10 @@
   "resolved" "https://registry.npmjs.org/util-deprecate/-/util-deprecate-1.0.2.tgz"
   "version" "1.0.2"
 
-"vite-plugin-svgr@^4.1.0":
-  "integrity" "sha512-v7Qic+FWmCChgQNGSI4V8X63OEYsdUoLt66iqIcHozq9bfK/Dwmr0V+LBy1NE8CE98Y8HouEBJ+pto4AMfN5xw=="
-  "resolved" "https://registry.npmjs.org/vite-plugin-svgr/-/vite-plugin-svgr-4.1.0.tgz"
-  "version" "4.1.0"
+"vite-plugin-svgr@^3.2.0":
+  "integrity" "sha512-vWZMCcGNdPqgziYFKQ3Y95XP0d0YGp28+MM3Dp9cTa/px5CKcHHrIoPl2Jw81rgVm6/ZUNONzjXbZQZ7Kw66og=="
+  "resolved" "https://registry.npmjs.org/vite-plugin-svgr/-/vite-plugin-svgr-3.3.0.tgz"
+  "version" "3.3.0"
   dependencies:
     "@rollup/pluginutils" "^5.0.4"
     "@svgr/core" "^8.1.0"
