@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import LayoutCard from "../components/LayoutCard";
+import TextLink from "../components/TextLink";
+import { API_STATUS, EN_CONSTANTS } from "../constants/common.constants";
 import TileContainer from "../containers/TileContainer";
 
 const Home = () => {
@@ -31,13 +33,31 @@ const Home = () => {
         size="FREE"
         color="BLACK_LIGHT"
         margin={{ y: 0, x: 3 }}>
-        {data.status === "SUCCESS" ? (
-          <div className="text-green-500 h-full w-full p-4">
-            Music Page
+        {data.status === API_STATUS.SUCCESS ? (
+          <div className="h-full w-full p-4">
+            <TextLink
+              text={EN_CONSTANTS.MUSIC_PAGE_HEADING}
+              type="TEXT"
+              styleConfig={{
+                weight: "EXTRA_BOLD",
+                color: "GREEN",
+                size: "BASE",
+              }}
+            />
             <TileContainer data={data?.data?.results} />
           </div>
         ) : (
-          <p>Loading your music stay calm....</p>
+          <div className="h-full w-full p-4">
+            <TextLink
+              text={EN_CONSTANTS.MUSIC_LOADING}
+              type={"TEXT"}
+              styleConfig={{
+                weight: "EXTRA_BOLD",
+                color: "GREEN",
+                size: "BASE",
+              }}
+            />
+          </div>
         )}
       </LayoutCard>
     </div>

@@ -6,11 +6,7 @@ import { ReactComponent as Play } from "../assets/svg/music-play-icon.svg";
 import { ReactComponent as Previous } from "../assets/svg/music-previous-icon.svg";
 import { ReactComponent as Search } from "../assets/svg/music-search-icon.svg";
 import { SVGIconTypes } from "../types/common.types";
-
-interface Props {
-  icon: SVGIconTypes;
-  iconStyleConfig?: { base?: string; hover?: string };
-}
+import { IconConfigInterface } from "../types/component.types";
 
 const IconMap: { [key in SVGIconTypes]: { component: any } } = {
   HOME: {
@@ -36,9 +32,8 @@ const IconMap: { [key in SVGIconTypes]: { component: any } } = {
   },
 };
 
-const IconComponent = ({ icon, iconStyleConfig }: Props) => {
+const IconComponent = ({ icon, iconStyleConfig }: IconConfigInterface) => {
   const element = icon && IconMap && IconMap[icon] ? IconMap[icon] : null;
-  console.log("element.component", element?.component);
   return element ? (
     <element.component
       className={`${iconStyleConfig?.base} hover:${iconStyleConfig?.hover}`}
