@@ -666,6 +666,10 @@
   "resolved" "https://registry.npmjs.org/array-union/-/array-union-2.1.0.tgz"
   "version" "2.1.0"
 
+"audio_x@github:afkcodes/audio_x#try":
+  "resolved" "git+ssh://git@github.com/afkcodes/audio_x.git#af56af04a406a6363024f83663d6d93068f2a504"
+  "version" "1.0.0"
+
 "autoprefixer@^10.4.16":
   "integrity" "sha512-7vd3UC6xKp0HLfua5IjZlcXvGAGy7cBAXTg2lyQ/8WpNhd6SiZ8Be+xm3FyBSYJx5GKcpRCzBh7RH4/0dnY+uQ=="
   "resolved" "https://registry.npmjs.org/autoprefixer/-/autoprefixer-10.4.16.tgz"
