@@ -1,46 +1,49 @@
-import { ReactComponent as Home } from '../assets/svg/music-home-icon.svg'
-import { ReactComponent as Library } from '../assets/svg/music-library-icon.svg'
-import { ReactComponent as Next } from '../assets/svg/music-next-icon.svg'
-import { ReactComponent as Pause } from '../assets/svg/music-pause-icon.svg'
-import { ReactComponent as Play } from '../assets/svg/music-play-icon.svg'
-import { ReactComponent as Previous } from '../assets/svg/music-previous-icon.svg'
-import { ReactComponent as Search } from '../assets/svg/music-search-icon.svg'
-import { SVGIconTypes } from "../types/common.types"
-
-
+import { ReactComponent as Home } from "../assets/svg/music-home-icon.svg";
+import { ReactComponent as Library } from "../assets/svg/music-library-icon.svg";
+import { ReactComponent as Next } from "../assets/svg/music-next-icon.svg";
+import { ReactComponent as Pause } from "../assets/svg/music-pause-icon.svg";
+import { ReactComponent as Play } from "../assets/svg/music-play-icon.svg";
+import { ReactComponent as Previous } from "../assets/svg/music-previous-icon.svg";
+import { ReactComponent as Search } from "../assets/svg/music-search-icon.svg";
+import { SVGIconTypes } from "../types/common.types";
 
 interface Props {
-  icon: SVGIconTypes, 
-    iconStyleConfig?: {base?: string, hover?: string} 
+  icon: SVGIconTypes;
+  iconStyleConfig?: { base?: string; hover?: string };
 }
 
-const SVGMap : {[key in SVGIconTypes]:{component:any}}={
+const IconMap: { [key in SVGIconTypes]: { component: any } } = {
   HOME: {
-    component: Home
+    component: Home,
   },
   LIBRARY: {
-    component: Library
+    component: Library,
   },
   NEXT: {
-    component: Next
+    component: Next,
   },
   PREVIOUS: {
-    component: Previous
+    component: Previous,
   },
   PLAY: {
-    component: Play
+    component: Play,
   },
   PAUSE: {
-    component: Pause
+    component: Pause,
   },
   SEARCH: {
-    component: Search
-  }
-}
+    component: Search,
+  },
+};
 
-const IconComponent = ({icon,iconStyleConfig}:Props) => {
-  const element = icon && SVGMap && SVGMap[icon] ? SVGMap[icon] : null;
-  return element ? (<element.component className={`${iconStyleConfig?.base} hover:${iconStyleConfig?.hover}`}/>) : null;
-}
+const IconComponent = ({ icon, iconStyleConfig }: Props) => {
+  const element = icon && IconMap && IconMap[icon] ? IconMap[icon] : null;
+  console.log("element.component", element?.component);
+  return element ? (
+    <element.component
+      className={`${iconStyleConfig?.base} hover:${iconStyleConfig?.hover}`}
+    />
+  ) : null;
+};
 
-export default IconComponent
+export default IconComponent;

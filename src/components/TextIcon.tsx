@@ -11,8 +11,8 @@ interface TextIconProps{
 
 const TextIcon = ({textConfig,iconConfig,alignment='ROW'}:TextIconProps) => {
   const alignmentMap:{[key in AlignmentTypes]:string} = {
-    ROW: "flex-col",
-    COL: "flex",
+    ROW: "",
+    COL: "flex-col",
     ROW_REVERSE: "flex-row-reverse",
     COL_REVERSE: "flex-col-reverse"
   }
