@@ -1,5 +1,6 @@
 import { ReactComponent as Home } from "../assets/svg/music-home-icon.svg";
 import { ReactComponent as Library } from "../assets/svg/music-library-icon.svg";
+import { ReactComponent as Loading } from "../assets/svg/music-loading-icon.svg";
 import { ReactComponent as Next } from "../assets/svg/music-next-icon.svg";
 import { ReactComponent as Pause } from "../assets/svg/music-pause-icon.svg";
 import { ReactComponent as Play } from "../assets/svg/music-play-icon.svg";
@@ -29,6 +30,9 @@ const IconMap: { [key in SVGIconTypes]: { component: any } } = {
   },
   SEARCH: {
     component: Search,
+  },
+  LOADING: {
+    component: Loading,
   },
 };
 

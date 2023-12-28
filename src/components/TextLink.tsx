@@ -32,7 +32,12 @@ const fontColorMap: { [key in FontColorTypes]: string } = {
   BLACK: "text-black",
 };
 
-const TextLink = ({ text, type, href, styleConfig }: TextLinkProps) => {
+const TextLink = ({
+  text,
+  href,
+  styleConfig,
+  type = "TEXT",
+}: TextLinkProps) => {
   const {
     weight = "NORMAL",
     size = "BASE",

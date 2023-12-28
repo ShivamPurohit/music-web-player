@@ -15,5 +15,6 @@ export type SVGIconTypes =
   | "PREVIOUS"
   | "PLAY"
   | "PAUSE"
-  | "SEARCH";
+  | "SEARCH"
+  | "LOADING";
 export type STATUS = "LOADING" | "SUCCESS" | "ERROR";
