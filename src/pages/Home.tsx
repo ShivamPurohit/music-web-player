@@ -2,7 +2,17 @@ import { useEffect, useState } from "react";
 import LayoutCard from "../components/LayoutCard";
 import TextLink from "../components/TextLink";
 import { API_STATUS, EN_CONSTANTS } from "../constants/common.constants";
-import TileContainer from "../containers/TileContainer";
+import AudioContainer from "../containers/BusinessContainer/AudioContainer";
+import { TextLinkInterface } from "../types/component.types";
+
+const audioTextStyleConfig: TextLinkInterface = {
+  type: "TEXT",
+  styleConfig: {
+    color: "GREEN",
+    size: "SM",
+    weight: "SEMI_BOLD",
+  },
+};
 
 const Home = () => {
   const [data, setData] = useState<any>({});
@@ -25,7 +35,6 @@ const Home = () => {
     fetchData();
   }, []);
 
-  console.log("state data", data);
   return (
     <div className="flex h-full w-full">
       <LayoutCard
@@ -44,7 +53,11 @@ const Home = () => {
                 size: "BASE",
               }}
             />
-            <TileContainer data={data?.data?.results} />
+            <AudioContainer
+              data={data?.data?.results}
+              displayConifg={{ textStyleConfig: audioTextStyleConfig }}
+              containerConfig={{ variant: "AUDIO_LIST" }}
+            />
           </div>
         ) : (
           <div className="h-full w-full p-4">

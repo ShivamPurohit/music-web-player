@@ -37,10 +37,12 @@ const SideNavbar = () => {
         size="MD"
         color="BLACK_LIGHT"
         margin={{ y: 0, x: 0, t: 0 }}>
-        <div className="flex flex-col ml-4">
+        <div className="flex flex-col p-4">
           {tabRoutes?.map((routeItem: RouteInterface) => {
             return (
-              <div className="flex flex-col mt-4" key={routeItem?.indexKey}>
+              <div
+                className="flex flex-col mb-4 last:mb-0"
+                key={routeItem?.indexKey}>
                 <TextIcon
                   textConfig={{
                     text: routeItem?.name,
@@ -64,7 +66,7 @@ const SideNavbar = () => {
         size="LG"
         color="BLACK_LIGHT"
         margin={{ y: 0, x: 0, t: 2 }}>
-        <div className="flex justify-center mt-4">
+        <div className="flex justify-center p-4">
           <TextIcon
             textConfig={{
               text: "YOUR LIBRARY",
