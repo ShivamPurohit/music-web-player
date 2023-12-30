@@ -32,6 +32,7 @@ export interface TextLinkInterface {
     weight?: FontWeightTypes;
     size?: FontSizeTypes;
     color: FontColorTypes;
+    lineClamp?: number;
   };
 }
 

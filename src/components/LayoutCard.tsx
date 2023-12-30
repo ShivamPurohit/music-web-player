@@ -26,8 +26,8 @@ const sizeMap: { [key in Sizes]: string } = {
   FREE: "h-full w-full",
   XS: "",
   SM: "",
-  MD: "h-32 min-w-80",
-  LG: "h-full min-w-80",
+  MD: "h-32 w-32 md:h-32 md:min-w-80",
+  LG: "h-full w-32 md:h-full md:min-w-80",
   XL: "",
 };
 

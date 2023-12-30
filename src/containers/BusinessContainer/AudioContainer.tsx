@@ -19,7 +19,7 @@ interface AudioContainerInterface {
 
 const audioContainerVariantMap: { [key in AudioContainerTypes]: string } = {
   AUDIO_LIST:
-    "mt-4 grid grid-cols-2 grid-rows-2 sm:grid-cols-1 gap-x-6 gap-y-6 sm:grid-rows-1 md:grid-cols-3 md:grid-rows-3",
+    "mt-4 grid gap-x-6 gap-y-6 grid-cols-1 grid-rows-1 md:grid-cols-3 md:grid-rows-3",
   TILE_LIST: "",
 };
 
@@ -28,35 +28,37 @@ const displayIconConfigMap: {
 } = {
   playing: {
     icon: "PAUSE",
-    iconStyleConfig: { base: "flex text-green-500 h-8 w-8" },
+    iconStyleConfig: { base: "flex text-green-500 h-4 w-4 md:h-8 md:w-8" },
   },
   paused: {
     icon: "RESUME",
-    iconStyleConfig: { base: "flex text-green-500 h-8 w-8" },
+    iconStyleConfig: { base: "flex text-green-500 h-4 w-4 md:h-8 md:w-8" },
   },
   buffering: {
     icon: "LOADING",
-    iconStyleConfig: { base: "flex text-green-500 h-12 w-12 animate-spin" },
+    iconStyleConfig: {
+      base: "flex text-green-500 animate-spin h-6 w-6 md:h-12 md:w-12",
+    },
   },
   idle: {
     icon: "PLAY",
-    iconStyleConfig: { base: "flex text-green-500 h-8 w-8" },
+    iconStyleConfig: { base: "flex text-green-500 h-4 w-4 md:h-8 md:w-8" },
   },
   ended: {
     icon: "PLAY",
-    iconStyleConfig: { base: "flex text-green-500 h-8 w-8" },
+    iconStyleConfig: { base: "flex text-green-500 h-4 w-4 md:h-8 md:w-8" },
   },
   ready: {
     icon: "PAUSE",
-    iconStyleConfig: { base: "flex text-green-500 h-8 w-8" },
+    iconStyleConfig: { base: "flex text-green-500 h-4 w-4 md:h-8 md:w-8" },
   },
   stalled: {
     icon: "PLAY",
-    iconStyleConfig: { base: "flex text-green-500 h-8 w-8" },
+    iconStyleConfig: { base: "flex text-green-500 h-4 w-4 md:h-8 md:w-8" },
   },
   error: {
     icon: "PLAY",
-    iconStyleConfig: { base: "flex text-green-500 h-8 w-8" },
+    iconStyleConfig: { base: "flex text-green-500 h-4 w-4 md:h-8 md:w-8" },
   },
 };
 

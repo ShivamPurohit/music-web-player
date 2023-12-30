@@ -11,6 +11,7 @@ const audioTextStyleConfig: TextLinkInterface = {
     color: "GREEN",
     size: "SM",
     weight: "SEMI_BOLD",
+    lineClamp: 1,
   },
 };
 
