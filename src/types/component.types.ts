@@ -8,8 +8,18 @@ import {
 export type CardColorTypes = "BLACK" | "BLACK_LIGHT" | "WHITE";
 export type TextTypes = "TEXT" | "LINK";
 export type Sizes = "XS" | "SM" | "MD" | "LG" | "XL" | "FREE";
-export type SongStatus = "IDLE" | "PLAY" | "PAUSE" | "LOADING";
+export type SongIconStatus = "IDLE" | "PLAY" | "PAUSE" | "LOADING";
 export type AudioContainerTypes = "AUDIO_LIST" | "TILE_LIST";
+export type PlayBackStateTypes =
+  | "idle"
+  | "playing"
+  | "ended"
+  | "ready"
+  | "paused"
+  | "stalled"
+  | "error"
+  | "buffering";
+export type SongActionTypes = "START_PLAYING" | "STOP_PLAYING";
 
 export interface TextLinkInterface {
   type?: TextTypes;
@@ -36,6 +46,5 @@ export interface ClickConfig {
 }
 
 export interface SongStatusInterface {
-  id: string | number | null;
-  playStatus: SongStatus;
+  playStatus: PlayBackStateTypes;
 }

@@ -1,7 +1,7 @@
+import { memo } from "react";
 import {
   IconConfigInterface,
-  SongStatus,
-  SongStatusInterface,
+  SongActionTypes,
   TextLinkInterface,
 } from "../types/component.types";
 import IconComponent from "./IconComponent";
@@ -11,7 +11,7 @@ interface AudioItemProps {
   textStyleConfig: TextLinkInterface;
   songData: any;
   iconConfig: IconConfigInterface;
-  onSongIconClick: (songItem: any, playStatus: SongStatusInterface) => void;
+  onSongIconClick: (songItem: any, songAction: SongActionTypes) => void;
 }
 
 const AudioItem = ({
@@ -21,28 +21,22 @@ const AudioItem = ({
   onSongIconClick,
 }: AudioItemProps) => {
   const handleSongClick = () => {
-    let playStatus: SongStatus = "PLAY";
+    let playStatus: SongActionTypes = "STOP_PLAYING";
     switch (iconConfig?.icon) {
       case "PLAY": {
-        playStatus = "PLAY";
+        playStatus = "START_PLAYING";
         break;
       }
-      case "PAUSE": {
-        playStatus = "PAUSE";
-        break;
-      }
-      case "LOADING": {
-        playStatus = "LOADING";
-        break;
-      }
+      //resume
+      // case "PAUSE": {
+      //   playStatus = "STOP_PLAYING";
+      //   break;
+      // }
       default: {
-        playStatus = "IDLE";
+        playStatus = "STOP_PLAYING";
       }
     }
-    onSongIconClick(songData, {
-      id: songData?.id,
-      playStatus: playStatus, //songStatus?.playStatus,
-    });
+    onSongIconClick(songData, playStatus);
   };
 
   return (
@@ -62,4 +56,4 @@ const AudioItem = ({
   );
 };
 
-export default AudioItem;
+export default memo(AudioItem);
