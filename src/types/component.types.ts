@@ -19,7 +19,11 @@ export type PlayBackStateTypes =
   | "stalled"
   | "error"
   | "buffering";
-export type SongActionTypes = "START_PLAYING" | "STOP_PLAYING";
+export type SongActionTypes =
+  | "START_PLAYING"
+  | "PAUSE_PLAYING"
+  | "RESUME_PLAYING"
+  | "STOP_PLAYING";
 
 export interface TextLinkInterface {
   type?: TextTypes;
