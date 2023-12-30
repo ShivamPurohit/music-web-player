@@ -43,7 +43,7 @@ const AudioItem = ({
   };
 
   return (
-    <div className="w-full h-20 bg-gray-500 rounded-md flex">
+    <div className="w-full h-14 md:h-20 bg-gray-500 rounded-md flex">
       <img src={`${songData?.image[1]?.link}`} className="rounded-md" />
       <div className="flex items-center ml-4 w-full">
         <div className="flex w-full">

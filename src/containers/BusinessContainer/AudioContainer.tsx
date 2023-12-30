@@ -28,35 +28,37 @@ const displayIconConfigMap: {
 } = {
   playing: {
     icon: "PAUSE",
-    iconStyleConfig: { base: "flex text-green-500 h-8 w-8" },
+    iconStyleConfig: { base: "flex text-green-500 h-4 w-4 md:h-8 md:w-8" },
   },
   paused: {
     icon: "RESUME",
-    iconStyleConfig: { base: "flex text-green-500 h-8 w-8" },
+    iconStyleConfig: { base: "flex text-green-500 h-4 w-4 md:h-8 md:w-8" },
   },
   buffering: {
     icon: "LOADING",
-    iconStyleConfig: { base: "flex text-green-500 h-12 w-12 animate-spin" },
+    iconStyleConfig: {
+      base: "flex text-green-500 animate-spin h-6 w-6 md:h-12 md:w-12",
+    },
   },
   idle: {
     icon: "PLAY",
-    iconStyleConfig: { base: "flex text-green-500 h-8 w-8" },
+    iconStyleConfig: { base: "flex text-green-500 h-4 w-4 md:h-8 md:w-8" },
   },
   ended: {
     icon: "PLAY",
-    iconStyleConfig: { base: "flex text-green-500 h-8 w-8" },
+    iconStyleConfig: { base: "flex text-green-500 h-4 w-4 md:h-8 md:w-8" },
   },
   ready: {
     icon: "PAUSE",
-    iconStyleConfig: { base: "flex text-green-500 h-8 w-8" },
+    iconStyleConfig: { base: "flex text-green-500 h-4 w-4 md:h-8 md:w-8" },
   },
   stalled: {
     icon: "PLAY",
-    iconStyleConfig: { base: "flex text-green-500 h-8 w-8" },
+    iconStyleConfig: { base: "flex text-green-500 h-4 w-4 md:h-8 md:w-8" },
   },
   error: {
     icon: "PLAY",
-    iconStyleConfig: { base: "flex text-green-500 h-8 w-8" },
+    iconStyleConfig: { base: "flex text-green-500 h-4 w-4 md:h-8 md:w-8" },
   },
 };
 
