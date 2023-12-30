@@ -29,6 +29,7 @@ const sizeMap: { [key in Sizes]: string } = {
   MD: "h-32 w-32 md:h-32 md:min-w-80",
   LG: "h-full w-32 md:h-full md:min-w-80",
   XL: "",
+  AUTO: "h-auto w-auto",
 };
 
 const marginYArr = ["my-0", "my-1", "my-2", "my-3"];

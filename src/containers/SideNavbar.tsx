@@ -84,6 +84,29 @@ const SideNavbar = () => {
           />
         </div>
       </LayoutCard>
+      <LayoutCard
+        variant="ROUNDED_EDGE"
+        size="AUTO"
+        color="BLACK_LIGHT"
+        margin={{ y: 0, x: 0, t: 2 }}>
+        <div className="flex justify-center p-4">
+          <TextIcon
+            textConfig={{
+              text: "Shivam Purohit",
+              type: "TEXT",
+              styleConfig: {
+                color: "GREEN",
+                weight: "BOLD",
+                size: "BASE",
+              },
+            }}
+            iconConfig={{
+              icon: "CLOSING_TAG",
+              iconStyleConfig: { base: "text-green-500 mr-4 " },
+            }}
+          />
+        </div>
+      </LayoutCard>
     </div>
   );
 };

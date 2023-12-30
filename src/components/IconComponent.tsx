@@ -1,3 +1,4 @@
+import { ReactComponent as ClosingTag } from "../assets/svg/music-closing-tag-icon.svg";
 import { ReactComponent as Home } from "../assets/svg/music-home-icon.svg";
 import { ReactComponent as Library } from "../assets/svg/music-library-icon.svg";
 import { ReactComponent as Loading } from "../assets/svg/music-loading-icon.svg";
@@ -37,6 +38,9 @@ const IconMap: { [key in SVGIconTypes]: { component: any } } = {
   },
   RESUME: {
     component: Resume,
+  },
+  CLOSING_TAG: {
+    component: ClosingTag,
   },
 };
 

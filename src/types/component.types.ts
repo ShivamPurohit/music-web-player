@@ -7,7 +7,7 @@ import {
 
 export type CardColorTypes = "BLACK" | "BLACK_LIGHT" | "WHITE";
 export type TextTypes = "TEXT" | "LINK";
-export type Sizes = "XS" | "SM" | "MD" | "LG" | "XL" | "FREE";
+export type Sizes = "XS" | "SM" | "MD" | "LG" | "XL" | "FREE" | "AUTO";
 export type SongIconStatus = "IDLE" | "PLAY" | "PAUSE" | "LOADING";
 export type AudioContainerTypes = "AUDIO_LIST" | "TILE_LIST";
 export type PlayBackStateTypes =
