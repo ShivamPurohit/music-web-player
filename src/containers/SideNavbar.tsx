@@ -97,7 +97,8 @@ const SideNavbar = () => {
           <TextIcon
             textConfig={{
               text: EN_CONSTANTS.DEVELOPER_NAME,
-              type: "TEXT",
+              type: "LINK",
+              href: "https://github.com/ShivamPurohit/music-web-player/",
               styleConfig: {
                 color: "GREEN",
                 weight: "BOLD",
