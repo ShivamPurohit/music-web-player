@@ -1,5 +1,9 @@
 import LayoutCard from "../components/LayoutCard";
 import TextIcon from "../components/TextIcon";
+import {
+  EN_CONSTANTS,
+  NAV_ROUTES_CONSTANTS,
+} from "../constants/common.constants";
 import { IconConfigInterface } from "../types/component.types";
 
 const SideNavbar = () => {
@@ -13,7 +17,7 @@ const SideNavbar = () => {
     {
       indexKey: 1,
       path: "/",
-      name: "Home",
+      name: NAV_ROUTES_CONSTANTS.HOME,
       iconConfig: {
         icon: "HOME",
         iconStyleConfig: { base: "text-green-500 mr-4" },
@@ -22,7 +26,7 @@ const SideNavbar = () => {
     {
       indexKey: 2,
       path: "/search",
-      name: "Search",
+      name: NAV_ROUTES_CONSTANTS.SEARCH,
       iconConfig: {
         icon: "SEARCH",
         iconStyleConfig: { base: "text-green-500 mr-4" },
@@ -69,7 +73,7 @@ const SideNavbar = () => {
         <div className="flex justify-center p-4">
           <TextIcon
             textConfig={{
-              text: "YOUR LIBRARY",
+              text: EN_CONSTANTS.YOUR_LIBRARY,
               type: "TEXT",
               styleConfig: {
                 color: "GREEN",
@@ -92,7 +96,7 @@ const SideNavbar = () => {
         <div className="flex justify-center p-4">
           <TextIcon
             textConfig={{
-              text: "Shivam Purohit",
+              text: EN_CONSTANTS.DEVELOPER_NAME,
               type: "TEXT",
               styleConfig: {
                 color: "GREEN",
