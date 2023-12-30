@@ -1,12 +1,15 @@
-import { useState } from "react";
+import { AudioState, AudioX } from "audio_x";
+import { useEffect, useState } from "react";
 import AudioItem from "../../components/AudioItem";
 import {
   AudioContainerTypes,
   IconConfigInterface,
-  SongStatus,
+  PlayBackStateTypes,
+  SongActionTypes,
   SongStatusInterface,
   TextLinkInterface,
 } from "../../types/component.types";
+import { createTrack } from "../../utils/createTrack";
 
 interface AudioContainerInterface {
   data: any;
@@ -20,49 +23,92 @@ const audioContainerVariantMap: { [key in AudioContainerTypes]: string } = {
   TILE_LIST: "",
 };
 
+const displayIconConfigMap: {
+  [key in PlayBackStateTypes]: IconConfigInterface;
+} = {
+  playing: {
+    icon: "PAUSE",
+    iconStyleConfig: { base: "flex text-green-500 h-8 w-8" },
+  },
+  paused: {
+    icon: "PLAY",
+    iconStyleConfig: { base: "flex text-green-500 h-8 w-8" },
+  },
+  buffering: {
+    icon: "LOADING",
+    iconStyleConfig: { base: "flex text-green-500 h-12 w-12 animate-spin" },
+  },
+  idle: {
+    icon: "PLAY",
+    iconStyleConfig: { base: "flex text-green-500 h-8 w-8" },
+  },
+  ended: {
+    icon: "PLAY",
+    iconStyleConfig: { base: "flex text-green-500 h-8 w-8" },
+  },
+  ready: {
+    icon: "PAUSE",
+    iconStyleConfig: { base: "flex text-green-500 h-8 w-8" },
+  },
+  stalled: {
+    icon: "PLAY",
+    iconStyleConfig: { base: "flex text-green-500 h-8 w-8" },
+  },
+  error: {
+    icon: "PLAY",
+    iconStyleConfig: { base: "flex text-green-500 h-8 w-8" },
+  },
+};
+
 const AudioContainer = ({
   data,
   containerConfig,
   displayConifg,
 }: AudioContainerInterface) => {
   const [songStatus, setSongStatus] = useState<SongStatusInterface>({
-    id: null,
-    playStatus: "IDLE",
+    playStatus: "idle",
   });
+  const [playingSongId, setPlayingSongId] = useState<string | number | null>(
+    ""
+  );
   const { variant = "AUDIO_LIST" } = containerConfig || {};
+  const audio = new AudioX();
+  audio.subscribe("AUDIO_X_STATE", (data: AudioState) => {
+    console.log("data", data);
+    setSongStatus({
+      playStatus: data?.playbackState,
+    });
+  });
+  console.log("songStatus", songStatus);
 
-  const handleSongClick = (
-    songItem: any,
-    songPlayingStatus: SongStatusInterface
-  ) => {
-    if (
-      songPlayingStatus?.playStatus === "PLAY" ||
-      songPlayingStatus?.playStatus === "IDLE"
-    ) {
-      setSongStatus({ id: songItem?.id, playStatus: "PAUSE" });
-    } else {
-      setSongStatus({ id: songItem?.id, playStatus: "PLAY" });
+  useEffect(() => {
+    // Initialize audio_x
+    audio.init({
+      autoPlay: false, // should auto play
+      useDefaultEventListeners: true, // use Default event listeners
+      showNotificationActions: true, // show notifications on devices
+      preloadStrategy: "auto", // preloading strategy //auto': means media content will be preloaded as much as possible until the player buffer is full.
+      playbackRate: 1, // set playback rate //  property sets the rate at which the media is being played back. This is used to implement user controls for fast forward, slow motion, and so forth.
+      enablePlayLog: false, // enable playlog support
+      enableHls: true, // enable hls support
+      hlsConfig: { backBufferLength: 2000 },
+      mode: "REACT",
+    });
+  }, []);
+
+  const handleSongClick = (songItem: any, songAction: SongActionTypes) => {
+    setPlayingSongId(songItem?.id);
+    if (songAction === "START_PLAYING") {
+      const track = createTrack(songItem);
+      audio.addMedia(track);
+      audio.play();
+    }
+    if (songAction === "STOP_PLAYING") {
+      audio.pause();
     }
   };
 
-  const displayIconConfigMap: { [key in SongStatus]: IconConfigInterface } = {
-    PLAY: {
-      icon: "PLAY",
-      iconStyleConfig: { base: "flex text-green-500 h-8 w-8" },
-    },
-    PAUSE: {
-      icon: "PAUSE",
-      iconStyleConfig: { base: "flex text-green-500 h-8 w-8" },
-    },
-    LOADING: {
-      icon: "LOADING",
-      iconStyleConfig: { base: "flex text-green-500 h-8 w-8 animate-spin" },
-    },
-    IDLE: {
-      icon: "PLAY",
-      iconStyleConfig: { base: "flex text-green-500 h-8 w-8" },
-    },
-  };
+  console.log("++playingSongId", playingSongId);
 
   return (
     <div className={`${audioContainerVariantMap[variant]}`}>
@@ -73,9 +119,9 @@ const AudioContainer = ({
           songData={item}
           onSongIconClick={handleSongClick}
           iconConfig={
-            songStatus?.id === item?.id
+            playingSongId === item?.id
               ? displayIconConfigMap[songStatus.playStatus]
-              : displayIconConfigMap["IDLE"]
+              : displayIconConfigMap["idle"]
           }
         />
       ))}

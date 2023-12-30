@@ -53,6 +53,16 @@ const Home = () => {
                 size: "BASE",
               }}
             />
+            <TextLink
+              text={EN_CONSTANTS.MUSIC_PLAYER_BACKED_LIBRARY}
+              type="LINK"
+              styleConfig={{
+                weight: "EXTRA_BOLD",
+                color: "GREEN",
+                size: "BASE",
+              }}
+              href="https://github.com/afkcodes/audio_x"
+            />
             <AudioContainer
               data={data?.data?.results}
               displayConifg={{ textStyleConfig: audioTextStyleConfig }}
