@@ -31,7 +31,7 @@ const displayIconConfigMap: {
     iconStyleConfig: { base: "flex text-green-500 h-8 w-8" },
   },
   paused: {
-    icon: "PLAY",
+    icon: "RESUME",
     iconStyleConfig: { base: "flex text-green-500 h-8 w-8" },
   },
   buffering: {
@@ -74,12 +74,10 @@ const AudioContainer = ({
   const { variant = "AUDIO_LIST" } = containerConfig || {};
   const audio = new AudioX();
   audio.subscribe("AUDIO_X_STATE", (data: AudioState) => {
-    console.log("data", data);
     setSongStatus({
       playStatus: data?.playbackState,
     });
   });
-  console.log("songStatus", songStatus);
 
   useEffect(() => {
     // Initialize audio_x
@@ -102,13 +100,14 @@ const AudioContainer = ({
       const track = createTrack(songItem);
       audio.addMedia(track);
       audio.play();
-    }
-    if (songAction === "STOP_PLAYING") {
+    } else if (songAction === "PAUSE_PLAYING") {
       audio.pause();
+    } else if (songAction === "RESUME_PLAYING") {
+      audio.play();
+    } else {
+      audio.stop();
     }
   };
-
-  console.log("++playingSongId", playingSongId);
 
   return (
     <div className={`${audioContainerVariantMap[variant]}`}>

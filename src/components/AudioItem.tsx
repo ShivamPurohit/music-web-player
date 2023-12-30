@@ -27,11 +27,14 @@ const AudioItem = ({
         playStatus = "START_PLAYING";
         break;
       }
-      //resume
-      // case "PAUSE": {
-      //   playStatus = "STOP_PLAYING";
-      //   break;
-      // }
+      case "PAUSE": {
+        playStatus = "PAUSE_PLAYING";
+        break;
+      }
+      case "RESUME": {
+        playStatus = "RESUME_PLAYING";
+        break;
+      }
       default: {
         playStatus = "STOP_PLAYING";
       }
