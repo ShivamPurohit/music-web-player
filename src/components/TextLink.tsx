@@ -32,6 +32,14 @@ const fontColorMap: { [key in FontColorTypes]: string } = {
   BLACK: "text-black",
 };
 
+const lineClampArr = [
+  "line-clamp-none",
+  "line-clamp-1",
+  "line-clamp-2",
+  "line-clamp-3",
+  "line-clamp-4",
+];
+
 const TextLink = ({
   text,
   href,
@@ -42,19 +50,20 @@ const TextLink = ({
     weight = "NORMAL",
     size = "BASE",
     color = "WHITE",
+    lineClamp = 0,
   } = styleConfig || {};
   return (
     <Fragment>
       {type === "TEXT" ? (
         <p
-          className={`${fontWeightMap[weight]} ${fontSizeMap[size]} ${fontColorMap[color]}`}>
+          className={`${fontWeightMap[weight]} ${fontSizeMap[size]} ${fontColorMap[color]} ${lineClampArr[lineClamp]}`}>
           {text}
         </p>
       ) : null}
       {type === "LINK" ? (
         <Link
           to={`${href}`}
-          className={`${fontWeightMap[weight]} ${fontSizeMap[size]} ${fontColorMap[color]}`}>
+          className={`${fontWeightMap[weight]} ${fontSizeMap[size]} ${fontColorMap[color]} ${lineClampArr[lineClamp]}`}>
           {text}
         </Link>
       ) : null}
