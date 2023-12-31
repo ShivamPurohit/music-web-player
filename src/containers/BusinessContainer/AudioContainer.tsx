@@ -1,4 +1,4 @@
-import { AudioState, AudioX } from "audio_x";
+import { AudioX } from "audio_x";
 import { useEffect, useState } from "react";
 import AudioItem from "../../components/AudioItem";
 import {
@@ -68,15 +68,14 @@ const AudioContainer = ({
   displayConifg,
 }: AudioContainerInterface) => {
   const [songStatus, setSongStatus] = useState<SongStatusInterface>({
+    id: "",
     playStatus: "idle",
   });
-  const [playingSongId, setPlayingSongId] = useState<string | number | null>(
-    ""
-  );
   const { variant = "AUDIO_LIST" } = containerConfig || {};
   const audio = new AudioX();
-  audio.subscribe("AUDIO_X_STATE", (data: AudioState) => {
+  audio.subscribe("AUDIO_X_STATE", (data: any) => {
     setSongStatus({
+      id: data?.currentTrack?.id as string,
       playStatus: data?.playbackState,
     });
   });
@@ -97,7 +96,6 @@ const AudioContainer = ({
   }, []);
 
   const handleSongClick = (songItem: any, songAction: SongActionTypes) => {
-    setPlayingSongId(songItem?.id);
     if (songAction === "START_PLAYING") {
       const track = createTrack(songItem);
       audio.addMedia(track);
@@ -120,7 +118,7 @@ const AudioContainer = ({
           songData={item}
           onSongIconClick={handleSongClick}
           iconConfig={
-            playingSongId === item?.id
+            songStatus?.id === item?.id
               ? displayIconConfigMap[songStatus.playStatus]
               : displayIconConfigMap["idle"]
           }
