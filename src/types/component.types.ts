@@ -51,5 +51,6 @@ export interface ClickConfig {
 }
 
 export interface SongStatusInterface {
+  id: string;
   playStatus: PlayBackStateTypes;
 }

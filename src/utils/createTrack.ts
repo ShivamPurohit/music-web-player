@@ -2,9 +2,18 @@ import { MediaTrack } from "audio_x";
 
 export const createTrack = (audioTrackData: any) => {
   console.log("audioTrackData", audioTrackData);
-  const { image, downloadUrl, name, album, primaryArtists, duration, year } =
-    audioTrackData;
+  const {
+    image,
+    downloadUrl,
+    name,
+    album,
+    primaryArtists,
+    duration,
+    year,
+    id,
+  } = audioTrackData;
   const track: MediaTrack = {
+    id: id,
     artwork: [
       {
         src: image?.[1]?.link, //"https://example.com/image.png",
