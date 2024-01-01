@@ -22,7 +22,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://saavn.me/search/songs?query=kun+faya+kun&page=1&limit=2"
+          "https://saavn.me/search/songs?query=honey+singh&page=1&limit=2"
         );
         if (!response.ok) {
           throw new Error("Network response  was not ok");

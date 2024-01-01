@@ -74,6 +74,7 @@ const AudioContainer = ({
   const { variant = "AUDIO_LIST" } = containerConfig || {};
   const audio = new AudioX();
   audio.subscribe("AUDIO_X_STATE", (data: any) => {
+    console.log("subscribe callback", data);
     setSongStatus({
       id: data?.currentTrack?.id as string,
       playStatus: data?.playbackState,
