@@ -1,11 +1,13 @@
 import { AudioX } from "audio_x";
 import { useEffect, useState } from "react";
 import AudioItem from "../../components/AudioItem";
+import { SVGIconTypes } from "../../types/common.types";
 import {
+  ActionIconConfig,
   AudioContainerTypes,
+  AudioItemDisplayTypes,
   IconConfigInterface,
   PlayBackStateTypes,
-  SongActionTypes,
   SongStatusInterface,
   TextLinkInterface,
 } from "../../types/component.types";
@@ -13,8 +15,12 @@ import { createTrack } from "../../utils/createTrack";
 
 interface AudioContainerInterface {
   data: any;
-  displayConifg: { textStyleConfig: TextLinkInterface };
+  displayConifg: {
+    textStyleConfig: TextLinkInterface;
+    audioItemDisplayType?: AudioItemDisplayTypes;
+  };
   containerConfig?: { variant: AudioContainerTypes };
+  actionIconConfig?: ActionIconConfig[];
 }
 
 const audioContainerVariantMap: { [key in AudioContainerTypes]: string } = {
@@ -66,6 +72,7 @@ const AudioContainer = ({
   data,
   containerConfig,
   displayConifg,
+  actionIconConfig,
 }: AudioContainerInterface) => {
   const [songStatus, setSongStatus] = useState<SongStatusInterface>({
     id: "",
@@ -74,7 +81,6 @@ const AudioContainer = ({
   const { variant = "AUDIO_LIST" } = containerConfig || {};
   const audio = new AudioX();
   audio.subscribe("AUDIO_X_STATE", (data: any) => {
-    console.log("subscribe callback", data);
     setSongStatus({
       id: data?.currentTrack?.id as string,
       playStatus: data?.playbackState,
@@ -96,18 +102,40 @@ const AudioContainer = ({
     });
   }, []);
 
-  const handleSongClick = (songItem: any, songAction: SongActionTypes) => {
-    if (songAction === "START_PLAYING") {
-      const track = createTrack(songItem);
-      audio.addMedia(track);
-      audio.play();
-    } else if (songAction === "PAUSE_PLAYING") {
-      audio.pause();
-    } else if (songAction === "RESUME_PLAYING") {
-      audio.play();
-    } else {
-      audio.stop();
+  const handleSongClick = (songItem: any, actionIcon: SVGIconTypes) => {
+    switch (actionIcon) {
+      case "PLAY": {
+        //"START_PLAYING"
+        const track = createTrack(songItem);
+        audio.addMedia(track);
+        audio.play();
+        break;
+      }
+      case "PAUSE": {
+        //"PAUSE_PLAYING"
+        audio.pause();
+        break;
+      }
+      case "RESUME": {
+        //"RESUME_PLAYING"
+        audio.play();
+        break;
+      }
+      default: {
+        //"STOP_PLAYING"
+        audio.stop();
+      }
     }
+  };
+
+  const getActionIconsConfig = (
+    itemId: string | number | null
+  ): IconConfigInterface => {
+    const songIconConfig =
+      songStatus?.id === itemId
+        ? displayIconConfigMap[songStatus.playStatus]
+        : displayIconConfigMap["idle"];
+    return songIconConfig;
   };
 
   return (
@@ -115,14 +143,14 @@ const AudioContainer = ({
       {data?.map((item: any) => (
         <AudioItem
           key={item?.id}
-          textStyleConfig={displayConifg?.textStyleConfig}
+          displayConifg={displayConifg}
           songData={item}
-          onSongIconClick={handleSongClick}
-          iconConfig={
-            songStatus?.id === item?.id
-              ? displayIconConfigMap[songStatus.playStatus]
-              : displayIconConfigMap["idle"]
-          }
+          songPlayConfig={{
+            onSongIconClick: handleSongClick,
+            iconBtnType: "RIGHT_MARGIN",
+            iconConfig: getActionIconsConfig(item?.id),
+          }}
+          actionIcons={actionIconConfig}
         />
       ))}
     </div>

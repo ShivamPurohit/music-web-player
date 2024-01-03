@@ -4,9 +4,14 @@ import {
   EN_CONSTANTS,
   NAV_ROUTES_CONSTANTS,
 } from "../constants/common.constants";
+import { useLibrary } from "../hooks/useLibrary.hook";
+import { SVGIconTypes } from "../types/common.types";
 import { IconConfigInterface } from "../types/component.types";
+import AudioContainer from "./BusinessContainer/AudioContainer";
 
 const SideNavbar = () => {
+  const { library, removeFromLib } = useLibrary();
+
   interface RouteInterface {
     indexKey: number;
     path: string;
@@ -33,6 +38,12 @@ const SideNavbar = () => {
       },
     },
   ];
+
+  const handleRemoveFromLibrary = (songItem: any, actionIcon: SVGIconTypes) => {
+    if (actionIcon === "REMOVE") {
+      removeFromLib(songItem?.id);
+    }
+  };
 
   return (
     <div className="flex flex-col">
@@ -87,6 +98,34 @@ const SideNavbar = () => {
             }}
           />
         </div>
+        <AudioContainer
+          data={library}
+          displayConifg={{
+            textStyleConfig: {
+              type: "TEXT",
+              styleConfig: {
+                color: "GREEN",
+                lineClamp: 2,
+                size: "BASE",
+                weight: "BOLD",
+              },
+            },
+            audioItemDisplayType: "VERTICAL_TILES",
+          }}
+          containerConfig={{ variant: "TILE_LIST" }}
+          actionIconConfig={[
+            {
+              callback: handleRemoveFromLibrary,
+              iconBtnType: "RIGHT_MARGIN",
+              iconConfig: {
+                icon: "REMOVE",
+                iconStyleConfig: {
+                  base: '"text-green-500 h-4 w-4 md:h-6 md:w-6',
+                },
+              },
+            },
+          ]}
+        />
       </LayoutCard>
       <LayoutCard
         variant="ROUNDED_EDGE"

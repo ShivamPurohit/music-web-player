@@ -24,6 +24,13 @@ export type SongActionTypes =
   | "PAUSE_PLAYING"
   | "RESUME_PLAYING"
   | "STOP_PLAYING";
+export type AudioIconBtnTypes = "DEFAULT" | "RIGHT_MARGIN";
+export type AudioItemDisplayTypes = "HORIZONTAL_TILES" | "VERTICAL_TILES";
+export interface ActionIconConfig {
+  iconConfig: IconConfigInterface;
+  callback: (songData: any, actionIcon: SVGIconTypes) => void;
+  iconBtnType: AudioIconBtnTypes;
+}
 
 export interface TextLinkInterface {
   type?: TextTypes;
