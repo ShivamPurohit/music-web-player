@@ -3,6 +3,8 @@ import LayoutCard from "../components/LayoutCard";
 import TextLink from "../components/TextLink";
 import { API_STATUS, EN_CONSTANTS } from "../constants/common.constants";
 import AudioContainer from "../containers/BusinessContainer/AudioContainer";
+import { useLibrary } from "../hooks/useLibrary.hook";
+import { SVGIconTypes } from "../types/common.types";
 import { TextLinkInterface } from "../types/component.types";
 
 const audioTextStyleConfig: TextLinkInterface = {
@@ -17,12 +19,13 @@ const audioTextStyleConfig: TextLinkInterface = {
 
 const Home = () => {
   const [data, setData] = useState<any>({});
+  const { library, addToLib } = useLibrary();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://saavn.me/search/songs?query=honey+singh&page=1&limit=2"
+          "https://saavn.me/search/songs?query=honey+singh&page=1&limit=8"
         );
         if (!response.ok) {
           throw new Error("Network response  was not ok");
@@ -35,6 +38,17 @@ const Home = () => {
     };
     fetchData();
   }, []);
+
+  const handleAddToLibraryClick = (songItem: any, actionIcon: SVGIconTypes) => {
+    if (actionIcon === "ADD_MUSIC") {
+      const isSongAlreadyInTheLibrary = library?.find(
+        (item: any) => item?.id === songItem?.id
+      );
+      if (!isSongAlreadyInTheLibrary) {
+        addToLib(songItem);
+      }
+    }
+  };
 
   return (
     <div className="flex h-full w-full">
@@ -68,6 +82,18 @@ const Home = () => {
               data={data?.data?.results}
               displayConifg={{ textStyleConfig: audioTextStyleConfig }}
               containerConfig={{ variant: "AUDIO_LIST" }}
+              actionIconConfig={[
+                {
+                  callback: handleAddToLibraryClick,
+                  iconBtnType: "RIGHT_MARGIN",
+                  iconConfig: {
+                    icon: "ADD_MUSIC",
+                    iconStyleConfig: {
+                      base: '"text-green-500 h-3 w-3 md:h-6 md:w-6',
+                    },
+                  },
+                },
+              ]}
             />
           </div>
         ) : (

@@ -18,5 +18,7 @@ export type SVGIconTypes =
   | "SEARCH"
   | "LOADING"
   | "RESUME"
-  | "CLOSING_TAG";
+  | "CLOSING_TAG"
+  | "ADD_MUSIC"
+  | "REMOVE";
 export type STATUS = "LOADING" | "SUCCESS" | "ERROR";
