@@ -106,8 +106,8 @@ const SideNavbar = () => {
               styleConfig: {
                 color: "GREEN",
                 lineClamp: 2,
-                size: "BASE",
-                weight: "BOLD",
+                size: "SM",
+                weight: "SEMI_BOLD",
               },
             },
             audioItemDisplayType: "VERTICAL_TILES",
