@@ -111,12 +111,13 @@ const SideNavbar = () => {
               },
             },
             audioItemDisplayType: "VERTICAL_TILES",
+            imageStyleClass: "rounded-full",
           }}
           containerConfig={{ variant: "TILE_LIST" }}
           actionIconConfig={[
             {
               callback: handleRemoveFromLibrary,
-              iconBtnType: "RIGHT_MARGIN",
+              iconBtnType: "CENTER_ALIGNED",
               iconConfig: {
                 icon: "REMOVE",
                 iconStyleConfig: {

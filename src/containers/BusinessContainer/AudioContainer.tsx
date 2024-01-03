@@ -5,20 +5,16 @@ import { SVGIconTypes } from "../../types/common.types";
 import {
   ActionIconConfig,
   AudioContainerTypes,
-  AudioItemDisplayTypes,
+  AudioDisplayConfigInterface,
   IconConfigInterface,
   PlayBackStateTypes,
   SongStatusInterface,
-  TextLinkInterface,
 } from "../../types/component.types";
 import { createTrack } from "../../utils/createTrack";
 
 interface AudioContainerInterface {
   data: any;
-  displayConifg: {
-    textStyleConfig: TextLinkInterface;
-    audioItemDisplayType?: AudioItemDisplayTypes;
-  };
+  displayConifg: AudioDisplayConfigInterface;
   containerConfig?: { variant: AudioContainerTypes };
   actionIconConfig?: ActionIconConfig[];
 }
@@ -147,7 +143,7 @@ const AudioContainer = ({
           songData={item}
           songPlayConfig={{
             onSongIconClick: handleSongClick,
-            iconBtnType: "RIGHT_MARGIN",
+            iconBtnType: "START_ALIGNED",
             iconConfig: getActionIconsConfig(item?.id),
           }}
           actionIcons={actionIconConfig}

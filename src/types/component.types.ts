@@ -24,7 +24,7 @@ export type SongActionTypes =
   | "PAUSE_PLAYING"
   | "RESUME_PLAYING"
   | "STOP_PLAYING";
-export type AudioIconBtnTypes = "DEFAULT" | "RIGHT_MARGIN";
+export type AudioIconBtnTypes = "DEFAULT" | "CENTER_ALIGNED" | "START_ALIGNED";
 export type AudioItemDisplayTypes = "HORIZONTAL_TILES" | "VERTICAL_TILES";
 export interface ActionIconConfig {
   iconConfig: IconConfigInterface;
@@ -60,4 +60,10 @@ export interface ClickConfig {
 export interface SongStatusInterface {
   id: string;
   playStatus: PlayBackStateTypes;
+}
+
+export interface AudioDisplayConfigInterface {
+  textStyleConfig: TextLinkInterface;
+  audioItemDisplayType?: AudioItemDisplayTypes;
+  imageStyleClass?: string;
 }
