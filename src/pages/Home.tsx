@@ -12,7 +12,7 @@ const audioTextStyleConfig: TextLinkInterface = {
   styleConfig: {
     color: "GREEN",
     size: "SM",
-    weight: "SEMI_BOLD",
+    weight: "BOLD",
     lineClamp: 1,
   },
 };
@@ -25,7 +25,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://saavn.me/search/songs?query=honey+singh&page=1&limit=8"
+          "https://saavn.me/search/songs?query=animal&page=1&limit=10"
         );
         if (!response.ok) {
           throw new Error("Network response  was not ok");
@@ -80,12 +80,15 @@ const Home = () => {
             />
             <AudioContainer
               data={data?.data?.results}
-              displayConifg={{ textStyleConfig: audioTextStyleConfig }}
+              displayConifg={{
+                textStyleConfig: audioTextStyleConfig,
+                imageStyleClass: "rounded-l-lg",
+              }}
               containerConfig={{ variant: "AUDIO_LIST" }}
               actionIconConfig={[
                 {
                   callback: handleAddToLibraryClick,
-                  iconBtnType: "RIGHT_MARGIN",
+                  iconBtnType: "CENTER_ALIGNED",
                   iconConfig: {
                     icon: "ADD_MUSIC",
                     iconStyleConfig: {
