@@ -77,10 +77,15 @@ const AudioContainer = ({
   const { variant = "AUDIO_LIST" } = containerConfig || {};
   const audio = new AudioX();
   audio.subscribe("AUDIO_X_STATE", (data: any) => {
-    setSongStatus({
-      id: data?.currentTrack?.id as string,
-      playStatus: data?.playbackState,
-    });
+    setSongStatus((prev) =>
+      data?.currentTrack?.id !== prev.id ||
+      data?.playbackState !== prev.playStatus
+        ? {
+            id: data?.currentTrack?.id,
+            playStatus: data?.playbackState,
+          }
+        : prev
+    );
   });
 
   useEffect(() => {
