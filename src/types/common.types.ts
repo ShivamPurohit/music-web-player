@@ -20,5 +20,6 @@ export type SVGIconTypes =
   | "RESUME"
   | "CLOSING_TAG"
   | "ADD_MUSIC"
-  | "REMOVE";
+  | "REMOVE"
+  | "DISK_ARM";
 export type STATUS = "LOADING" | "SUCCESS" | "ERROR";

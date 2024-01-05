@@ -66,4 +66,5 @@ export interface AudioDisplayConfigInterface {
   textStyleConfig: TextLinkInterface;
   audioItemDisplayType?: AudioItemDisplayTypes;
   imageStyleClass?: string;
+  diskArmStyleClass?: string;
 }

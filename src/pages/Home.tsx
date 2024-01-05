@@ -25,7 +25,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://saavn.me/search/songs?query=animal&page=1&limit=10"
+          "https://saavn.me/search/songs?query=animal&page=1&limit=5"
         );
         if (!response.ok) {
           throw new Error("Network response  was not ok");
@@ -82,7 +82,8 @@ const Home = () => {
               data={data?.data?.results}
               displayConifg={{
                 textStyleConfig: audioTextStyleConfig,
-                imageStyleClass: "rounded-l-lg",
+                imageStyleClass: "h-36 w-36 object-fill	rounded-full",
+                diskArmStyleClass: "h-20 w-20",
               }}
               containerConfig={{ variant: "AUDIO_LIST" }}
               actionIconConfig={[

@@ -112,6 +112,7 @@ const SideNavbar = () => {
             },
             audioItemDisplayType: "VERTICAL_TILES",
             imageStyleClass: "rounded-full",
+            diskArmStyleClass: "h-10 w-10 ml-3",
           }}
           containerConfig={{ variant: "TILE_LIST" }}
           actionIconConfig={[

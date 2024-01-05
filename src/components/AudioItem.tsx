@@ -31,6 +31,7 @@ const AudioItem = ({
     textStyleConfig,
     audioItemDisplayType = "HORIZONTAL_TILES",
     imageStyleClass = "",
+    diskArmStyleClass = "",
   } = displayConifg;
   const IconBtnStyleMap: { [key in AudioIconBtnTypes]: string } = {
     DEFAULT: "",
@@ -38,7 +39,8 @@ const AudioItem = ({
     START_ALIGNED: "flex items-center justify-start w-full",
   };
   const displayAudioItemsMap: { [key in AudioItemDisplayTypes]: string } = {
-    HORIZONTAL_TILES: " h-14 md:h-20 bg-gray-800 rounded-lg flex",
+    HORIZONTAL_TILES:
+      " h-14 md:h-56 w-44 bg-gray-800 rounded-lg flex flex-col items-center",
     VERTICAL_TILES:
       "h-14 md:h-16 mt-4 mx-4 bg-gray-600 rounded-l-full rounded-r-full flex",
   };
@@ -46,10 +48,23 @@ const AudioItem = ({
     <div className={`${displayAudioItemsMap[audioItemDisplayType]}`}>
       <img
         src={`${songData?.image[1]?.link}`}
-        className={`${imageStyleClass}`}
+        className={`${imageStyleClass} ${
+          songPlayConfig?.iconConfig?.icon === "PAUSE" ? "animate-spin" : ""
+        } `}
       />
-      <div className="flex items-center ml-4 w-full">
-        <div className="flex max-w-28 min-w-28">
+      {["PAUSE", "RESUME"].includes(songPlayConfig?.iconConfig?.icon) ? (
+        <IconComponent
+          icon="DISK_ARM"
+          iconStyleConfig={{ base: `absolute ${diskArmStyleClass}` }}
+        />
+      ) : null}
+
+      <div
+        className={`flex  items-center w-full justify-evenly	${
+          audioItemDisplayType === "HORIZONTAL_TILES" ? "flex-col" : ""
+        }`}>
+        {/* max-w-28 min-w-28 */}
+        <div className="flex p-2 px-4 ">
           <TextLink text={songData?.name} {...textStyleConfig} />
         </div>
         <div className="flex w-full">
