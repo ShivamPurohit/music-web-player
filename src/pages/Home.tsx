@@ -55,7 +55,7 @@ const Home = () => {
       <LayoutCard
         variant="ROUNDED_EDGE"
         size="FREE"
-        color="DARK_BG"
+        color="BLACK_LIGHT"
         margin={{ y: 0, x: 3 }}>
         {data.status === API_STATUS.SUCCESS ? (
           <div className="h-full w-full p-4">
