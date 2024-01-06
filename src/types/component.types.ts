@@ -5,7 +5,7 @@ import {
   SVGIconTypes,
 } from "./common.types";
 
-export type CardColorTypes = "BLACK" | "BLACK_LIGHT" | "WHITE";
+export type CardColorTypes = "BLACK" | "BLACK_LIGHT" | "WHITE" | "DARK_BG";
 export type TextTypes = "TEXT" | "LINK";
 export type Sizes = "XS" | "SM" | "MD" | "LG" | "XL" | "FREE" | "AUTO";
 export type SongIconStatus = "IDLE" | "PLAY" | "PAUSE" | "LOADING";

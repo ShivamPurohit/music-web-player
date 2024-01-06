@@ -50,7 +50,7 @@ const SideNavbar = () => {
       <LayoutCard
         variant="ROUNDED_EDGE"
         size="MD"
-        color="BLACK_LIGHT"
+        color="DARK_BG"
         margin={{ y: 0, x: 0, t: 0 }}>
         <div className="flex flex-col p-4">
           {tabRoutes?.map((routeItem: RouteInterface) => {
@@ -79,7 +79,7 @@ const SideNavbar = () => {
       <LayoutCard
         variant="ROUNDED_EDGE"
         size="LG"
-        color="BLACK_LIGHT"
+        color="DARK_BG"
         margin={{ y: 0, x: 0, t: 2 }}>
         <div className="flex justify-center p-4">
           <TextIcon
@@ -131,7 +131,7 @@ const SideNavbar = () => {
       <LayoutCard
         variant="ROUNDED_EDGE"
         size="AUTO"
-        color="BLACK_LIGHT"
+        color="DARK_BG"
         margin={{ y: 0, x: 0, t: 2 }}>
         <div className="flex justify-center p-4">
           <TextIcon
