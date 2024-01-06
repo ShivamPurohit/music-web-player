@@ -22,7 +22,7 @@ const Search = () => {
   const fetchData = async (query: string) => {
     try {
       const response = await fetch(
-        `https://saavn.me/search/songs?query=${query}l&page=1&limit=15`
+        `https://saavn.me/search/songs?query=${query}l&page=1&limit=20`
       );
       if (!response.ok) {
         throw new Error("Network response  was not ok");
@@ -60,7 +60,8 @@ const Search = () => {
         variant="ROUNDED_EDGE"
         size="FREE"
         color="BLACK_LIGHT"
-        margin={{ y: 0, x: 3, t: 3 }}>
+        margin={{ y: 0, x: 3, t: 3 }}
+        isVerticalScrollable={true}>
         {data.status === API_STATUS.SUCCESS ? (
           <div className="h-full w-full p-4">
             <AudioContainer
