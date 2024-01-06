@@ -25,7 +25,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://saavn.me/search/songs?query=animal&page=1&limit=10"
+          "https://saavn.me/search/songs?query=animal&page=1&limit=15"
         );
         if (!response.ok) {
           throw new Error("Network response  was not ok");
@@ -56,7 +56,8 @@ const Home = () => {
         variant="ROUNDED_EDGE"
         size="FREE"
         color="BLACK_LIGHT"
-        margin={{ y: 0, x: 3 }}>
+        margin={{ y: 0, x: 3 }}
+        isVerticalScrollable={true}>
         {data.status === API_STATUS.SUCCESS ? (
           <div className="h-full w-full p-4">
             <TextLink
