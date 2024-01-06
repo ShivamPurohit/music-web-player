@@ -4,6 +4,8 @@ export const EN_CONSTANTS = {
   MUSIC_PLAYER_BACKED_LIBRARY: "(Powered by audio_x)",
   DEVELOPER_NAME: "Shivam Purohit",
   YOUR_LIBRARY: "YOUR LIBRARY",
+  SEARCH: "Seach",
+  SEARCH_PLACEHOLDER: "start searching your music...",
 };
 
 export const API_STATUS = {
