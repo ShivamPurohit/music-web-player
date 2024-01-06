@@ -11,7 +11,7 @@ module.exports = {
         80: "20rem",
       },
       backgroundImage: {
-        "galaxy-img": "url('./src/assets/jpg/galaxy-image.jpg')",
+        "galaxy-img": "url('./public/static/jpg/galaxy-image.jpg')",
       },
     },
   },
