@@ -1,9 +1,11 @@
 import { ReactNode } from "react";
+import "../css/scrollbar.css";
 import { BorderRadiusTypes } from "../types/common.types";
 import { CardColorTypes, Sizes } from "../types/component.types";
 
 interface LayoutCardProps {
   variant: BorderRadiusTypes;
+  isVerticalScrollable?: boolean;
   size: Sizes;
   color: CardColorTypes;
   margin?: { x: number; y: number; t?: number };
@@ -43,10 +45,13 @@ const LayoutCard = ({
   color,
   margin,
   children,
+  isVerticalScrollable = false,
 }: LayoutCardProps) => {
   return (
     <div
-      className={`${cardBorderRadiusMap[variant]} ${cardColorMap[color]} ${
+      className={`${
+        isVerticalScrollable ? "custom-scrollbar overflow-y-auto" : ""
+      } ${cardBorderRadiusMap[variant]} ${cardColorMap[color]} ${
         sizeMap[size]
       } ${marginYArr[margin?.y as number]} ${marginXArr[margin?.x as number]} ${
         margintArr[margin?.t as number]

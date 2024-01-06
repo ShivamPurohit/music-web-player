@@ -80,7 +80,8 @@ const SideNavbar = () => {
         variant="ROUNDED_EDGE"
         size="LG"
         color="BLACK_LIGHT"
-        margin={{ y: 0, x: 0, t: 2 }}>
+        margin={{ y: 0, x: 0, t: 2 }}
+        isVerticalScrollable={true}>
         <div className="flex justify-center p-4">
           <TextIcon
             textConfig={{
