@@ -1,7 +1,7 @@
 import { useState } from "react";
 import LayoutCard from "../components/LayoutCard";
 import TextLink from "../components/TextLink";
-import { API_STATUS, EN_CONSTANTS } from "../constants/common.constants";
+import { EN_CONSTANTS } from "../constants/common.constants";
 import AudioContainer from "../containers/BusinessContainer/AudioContainer";
 import SearchInputContainer from "../containers/SearchInputContainer";
 import { useLibrary } from "../hooks/useLibrary.hook";
@@ -22,7 +22,7 @@ const Search = () => {
   const fetchData = async (query: string) => {
     try {
       const response = await fetch(
-        `https://saavn.me/search/songs?query=${query}l&page=1&limit=15`
+        `https://saavn.dev/api/search/songs?query=${query}&page=1&limit=15`
       );
       if (!response.ok) {
         throw new Error("Network response  was not ok");
@@ -61,7 +61,7 @@ const Search = () => {
         size="FREE"
         color="BLACK_LIGHT"
         margin={{ y: 0, x: 3, t: 3 }}>
-        {data.status === API_STATUS.SUCCESS ? (
+        {data ? (
           <div className="h-full w-full p-4">
             <AudioContainer
               data={data?.data?.results}

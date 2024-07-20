@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import LayoutCard from "../components/LayoutCard";
 import TextLink from "../components/TextLink";
-import { API_STATUS, EN_CONSTANTS } from "../constants/common.constants";
+import { EN_CONSTANTS } from "../constants/common.constants";
 import AudioContainer from "../containers/BusinessContainer/AudioContainer";
 import { useLibrary } from "../hooks/useLibrary.hook";
 import { SVGIconTypes } from "../types/common.types";
@@ -25,7 +25,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://saavn.me/search/songs?query=animal&page=1&limit=15"
+          "https://saavn.dev/api/search/songs?query=Believer&page=1&limit=15"
         );
         if (!response.ok) {
           throw new Error("Network response  was not ok");
@@ -58,7 +58,7 @@ const Home = () => {
         color="BLACK_LIGHT"
         margin={{ y: 0, x: 3 }}
         isVerticalScrollable={true}>
-        {data.status === API_STATUS.SUCCESS ? (
+        {data ? (
           <div className="h-full w-full p-4">
             <TextLink
               text={EN_CONSTANTS.MUSIC_PAGE_HEADING}

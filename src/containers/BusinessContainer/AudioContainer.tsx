@@ -1,5 +1,5 @@
 import { AudioX } from "audio_x";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import AudioItem from "../../components/AudioItem";
 import { SVGIconTypes } from "../../types/common.types";
 import {
@@ -63,7 +63,20 @@ const displayIconConfigMap: {
     iconStyleConfig: { base: "flex text-green-500 h-4 w-4 md:h-8 md:w-8" },
   },
 };
+const audio = new AudioX();
 
+// Initialize audio_x
+audio.init({
+  autoPlay: false, // should auto play
+  useDefaultEventListeners: true, // use Default event listeners
+  showNotificationActions: true, // show notifications on devices
+  preloadStrategy: "auto", // preloading strategy //auto': means media content will be preloaded as much as possible until the player buffer is full.
+  playbackRate: 1, // set playback rate //  property sets the rate at which the media is being played back. This is used to implement user controls for fast forward, slow motion, and so forth.
+  enablePlayLog: false, // enable playlog support
+  enableHls: false, // enable hls support
+  hlsConfig: { backBufferLength: 2000 },
+  mode: "REACT",
+});
 const AudioContainer = ({
   data,
   containerConfig,
@@ -75,7 +88,6 @@ const AudioContainer = ({
     playStatus: "idle",
   });
   const { variant = "AUDIO_LIST" } = containerConfig || {};
-  const audio = new AudioX();
   audio.subscribe("AUDIO_X_STATE", (data: any) => {
     setSongStatus((prev) =>
       data?.currentTrack?.id !== prev.id ||
@@ -87,21 +99,6 @@ const AudioContainer = ({
         : prev
     );
   });
-
-  useEffect(() => {
-    // Initialize audio_x
-    audio.init({
-      autoPlay: false, // should auto play
-      useDefaultEventListeners: true, // use Default event listeners
-      showNotificationActions: true, // show notifications on devices
-      preloadStrategy: "auto", // preloading strategy //auto': means media content will be preloaded as much as possible until the player buffer is full.
-      playbackRate: 1, // set playback rate //  property sets the rate at which the media is being played back. This is used to implement user controls for fast forward, slow motion, and so forth.
-      enablePlayLog: false, // enable playlog support
-      enableHls: true, // enable hls support
-      hlsConfig: { backBufferLength: 2000 },
-      mode: "REACT",
-    });
-  }, []);
 
   const handleSongClick = (songItem: any, actionIcon: SVGIconTypes) => {
     switch (actionIcon) {
