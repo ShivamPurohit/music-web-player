@@ -15,12 +15,12 @@ export const createTrack = (audioTrackData: any) => {
     id: id,
     artwork: [
       {
-        src: image?.[1]?.link, //"https://example.com/image.png",
+        src: image?.[1]?.url, //"https://example.com/image.png",
         name: "image-name",
         sizes: image?.[1].quality, //"512x512",
       },
     ],
-    source: downloadUrl?.[4]?.link, //"https://example.com/stream.mp3",
+    source: downloadUrl?.[4]?.url, //"https://example.com/stream.mp3",
     title: name, //"My Awesome Song",
     album: album.name, //"Awesome Album",
     artist: primaryArtists, //"Amazing Artist",

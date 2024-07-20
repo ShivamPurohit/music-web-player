@@ -45,7 +45,7 @@ const AudioItem = ({
   return (
     <div className={`${displayAudioItemsMap[audioItemDisplayType]}`}>
       <img
-        src={`${songData?.image[1]?.link}`}
+        src={`${songData?.image[1]?.url}`}
         className={`${imageStyleClass}`}
       />
       <div className="flex items-center ml-4 w-full">
