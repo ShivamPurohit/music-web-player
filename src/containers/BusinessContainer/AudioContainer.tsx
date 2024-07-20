@@ -73,7 +73,7 @@ audio.init({
   preloadStrategy: "auto", // preloading strategy //auto': means media content will be preloaded as much as possible until the player buffer is full.
   playbackRate: 1, // set playback rate //  property sets the rate at which the media is being played back. This is used to implement user controls for fast forward, slow motion, and so forth.
   enablePlayLog: false, // enable playlog support
-  enableHls: false, // enable hls support
+  enableHls: true, // enable hls support
   hlsConfig: { backBufferLength: 2000 },
   mode: "REACT",
 });
